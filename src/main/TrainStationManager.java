@@ -287,21 +287,25 @@ public class TrainStationManager {
 	 * @param stationName - Name of the station whose route we want to trace
 	 * @return (String) String representation of the path taken to reach stationName.
 	 */
+	
 	public String traceRoute(String stationName) {
-	    StringBuilder route = new StringBuilder();
-	    route.append(startingCity);
+	    Stack<String> routeStack = new ArrayListStack<>();
 
-	    Stack<String> stack = visitedCitiesStack.get(stationName);
-	    if (stack != null) {
-	        while (!stack.isEmpty()) {
-	            route.append("->").append(stack.pop());
-	        }
+	    String currentStation = stationName;
+
+	    while (currentStation != null) {
+	        routeStack.push(currentStation);
+	        currentStation = visitedCities.get(currentStation);
 	    }
-	    if (!stationName.equals(startingCity)) {
-	        route.append("->").append(stationName);
+
+	    StringBuilder route = new StringBuilder();
+	    while (!routeStack.isEmpty()) {
+	        route.append(routeStack.pop());
+	        if (!routeStack.isEmpty()) {
+	            route.append("->");
+	        }
 	    }
 
 	    return route.toString();
 	}
-
 }
