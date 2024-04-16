@@ -1,7 +1,7 @@
 package main;
 /**
- * 
- * 
+ * @author Kenneth S. Sepulveda
+ * Station class manages getting and setting the city name and also does the same for its distance.
  */
 public class Station {
     
@@ -14,28 +14,28 @@ public class Station {
             this.distance = dist;
 	}
 	/**
-	 * 
+	 * gets the CityName
 	 * @return
 	 */
 	public String getCityName() {
             return cityName;
 	}
 	/**
-	 * 
-	 * @param cityName
+	 * sets the city name
+	 * @param cityName - Name of the City
 	 */
 	public void setCityName(String cityName) {
             this.cityName = cityName;
 	}
 	/**
 	 * 
-	 * @return
+	 * @return gets the distances
 	 */
 	public int getDistance() {
             return distance;
 	}
 	/**
-	 * 
+	 * sets the distance 
 	 * @param distance
 	 */
 	public void setDistance(int distance) {
@@ -55,8 +55,7 @@ public class Station {
 	}
 	@Override
 	/**
-	 * 
-	 * 
+	 * Converts the distance and CityName into a string
 	 */
 	public String toString() {
 		return "(" + this.getCityName() + ", " + this.getDistance() + ")";
