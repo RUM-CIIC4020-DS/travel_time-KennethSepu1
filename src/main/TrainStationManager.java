@@ -31,7 +31,8 @@ public class TrainStationManager {
      */ 
     public TrainStationManager(String station_file) { 
         // Implement file reading and station data population here
-        // Create a HashMap to store source cities and their stations        // Implement file reading and station data population here
+        // Create a HashMap to store source cities and their stations        
+    	// Implement file reading and station data population here
         // Create a HashMap to store source cities and their stations
 
         // Read data from CSV and populate the map
@@ -136,14 +137,14 @@ public class TrainStationManager {
         }
 
         stationStack.push(shortestDistances.get(startingCity));
-        //se toma el primer elemento y se mete al stack
+        //get first element and put it on the stack
 
 
         while (!stationStack.isEmpty()){
 
-            Station currentStation = stationStack.pop();                            //pop ciudad_actual 
-            stationVisited_set.add(currentStation.getCityName());                   // se agrega la estacion actual al set
-            List<Station> neighbors = stations.get(currentStation.getCityName());   // se hace una lista de vecinos
+            Station currentStation = stationStack.pop();                            //pop currentStation 
+            stationVisited_set.add(currentStation.getCityName());                   // Add currentStation to the set
+            List<Station> neighbors = stations.get(currentStation.getCityName());   // Create a list of the neighbors 
 
 
 
@@ -163,7 +164,7 @@ public class TrainStationManager {
 
                     if (A > (B+C)){
                         shortestDistances.get(neighbor.getCityName()).setDistance(B+C);
-                        //SE GUARDAN DE MODO QUE A ES LA ESTACION actual y C ES LA ESTACION previa a A
+                        //They are stored so that A is the current station and C is the station prior to A.
                         visitedCities.put(neighbor.getCityName(), currentStation.getCityName());
                     }
                     if (!stationVisited_set.isMember(neighbor.getCityName())){
@@ -186,15 +187,15 @@ public class TrainStationManager {
         return shortestDistances;
     }
     /**
+     * Sorts the stack of stations in descending order of their distance from a close station.
      * 
-     * @param neighbor
-     * @param stackToSort
-     * 
+     * @param neighbor - The neighbor station used as a reference for sorting.
+     * @param stackToSort - The stack of stations to be sorted.
      */
     public void sortStack(Station neighbor, Stack<Station> stackToSort) {
         int stack_number = neighbor.getDistance();
 
-        while (!stackToSort.isEmpty() && stack_number > stackToSort.top().getDistance()) { // Agregamos una comprobación de si la pila está vacía
+        while (!stackToSort.isEmpty() && stack_number > stackToSort.top().getDistance()) { // check to see if the stack is empty.
             stationStack_copy.push(stackToSort.pop());
         }
         stackToSort.push(neighbor);
@@ -204,19 +205,14 @@ public class TrainStationManager {
         }
     }
     /**
-     * 
+     *  For each city make a list that returns the cities you pass through, so we have
+        the amount with arr.size() and also the cities to make the journey.
      * @return
      */
     public Map<String, Double> getTravelTimes() {
     // Implement travel time calculation here	
             // 5 minutes per kilometer
-            // 15 min per station
-
-        /*
-            Por cada ciudad hacer una lista que retorne las ciudades por las que se pasa, por lo que tenemos
-        la cantidad con arr.size() y ademas las ciudades para hacer el trayecto
-        */
-        
+            // 15 min per station     
         //keys represent all the stations names
     	  for (int i = 0; i < keys.size(); i++) {
     		    String key = keys.get(i);
@@ -244,7 +240,7 @@ public class TrainStationManager {
 ////////////////////////   GETTERs AND SETTERs 
     /**
      * 
-     * @return
+     * @return the stations that we get.
      */
 	public Map<String, List<Station>> getStations() {
             return stations;
@@ -253,7 +249,7 @@ public class TrainStationManager {
 
 	/**
 	 * 
-	 * @param cities
+	 * @param cities - set the cities as stations.
 	 */
 	public void setStations(Map<String, List<Station>> cities) {
             this.stations = cities;
@@ -262,7 +258,7 @@ public class TrainStationManager {
 
 	/**
 	 * 
-	 * @return
+	 * @return the shortest distance between places.
 	 */
 	public Map<String, Station> getShortestRoutes() {
             return shortestDistances;
@@ -271,7 +267,7 @@ public class TrainStationManager {
 
 	/**
 	 * 
-	 * @param shortestRoutes
+	 * @param shortestRoutes -set the shortestRout
 	 */
 	public void setShortestRoutes(Map<String, Station> shortestRoutes) {
             this.shortestDistances = shortestRoutes;
