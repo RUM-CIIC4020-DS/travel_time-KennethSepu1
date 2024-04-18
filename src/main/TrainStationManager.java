@@ -271,7 +271,7 @@ public class TrainStationManager {
 	 */
 	public void setShortestRoutes(Map<String, Station> shortestRoutes) {
             this.shortestDistances = shortestRoutes;
-        }
+      }
 
 	
 	/**
