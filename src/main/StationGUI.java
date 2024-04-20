@@ -104,9 +104,6 @@ public class StationGUI extends JFrame {
      */
     private String getArrivalTime(String station, Double travelTime) {
         String departureTime = departureTimes.get(station);
-        if (departureTime == null) {
-            return null;
-        }
 
         String[] parts = departureTime.split(":");
         int hours = Integer.parseInt(parts[0]);
@@ -140,7 +137,7 @@ public class StationGUI extends JFrame {
 
 
     /**
-     * 
+     *  Used to display the input file
      * @param args
      */
     public static void main(String[] args) {

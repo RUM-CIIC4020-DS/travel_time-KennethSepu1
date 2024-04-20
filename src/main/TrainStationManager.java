@@ -100,7 +100,7 @@ public class TrainStationManager {
                 }
             }
         } catch (IOException e) {
-            System.out.println("NO SE PUDO LEER");
+            System.out.println("Cannot be read");
         }
         
         shortestDistances = findShortestDistance();
